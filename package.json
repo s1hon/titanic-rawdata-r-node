@@ -1,0 +1,26 @@
+{
+  "name": "titanic-rawdata-r-node",
+  "version": "1.0.0",
+  "description": "This is an example with nodejs & R. Use R to analyze titanic-raw-data, sending the result to nodejs. There are two versions in this example: [1] rdata [2] json.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "opjlmi <opjlmi@gmail.com> (http://github.com/opjlmi)",
+  "license": "MIT",
+  "dependencies": {
+    "csvtojson": "^1.0.0",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "rio": "^2.4.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opjlmi/titanic-rawdata-r-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/opjlmi/titanic-rawdata-r-node/issues"
+  },
+  "homepage": "https://github.com/opjlmi/titanic-rawdata-r-node#readme"
+}

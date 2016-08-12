@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    #c {
+      float: left;
+    }
+    #cart{
+      float: left;
+    }
+    #rules {
+      width: 800px;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  Choose a source: &nbsp;<a href="/">CSV</a>&nbsp;
+  <a href="/json">JSON</a>
+  <h1>Titanic.raw.rdata(<%= title %>)</h1>
+  <canvas id="c"></canvas>
+  <canvas id="cart"></canvas>
+  <table id="rules">
+    <% for(var row=0; row<Object.keys(rule).length; row++) { %>
+      <% if (row==1) { %>
+        <% continue %>
+      <% } else { %>
+        <tr>
+          <td><%= Object.keys(rule)[row].toUpperCase() %></td>
+          <% for(var i=0; i<rule[Object.keys(rule)[row]].length; i++) {%>
+            <% var tdvalue = String(rule[Object.keys(rule)[row]][i]) %>
+            <% tdvalue = tdvalue.replace(/{([^"]*)}/g, "$1") %>
+            <% tdvalue = tdvalue.replace(/,/g, "<br>") %>
+            <td><%- tdvalue %></td>
+          <% } %>
+        </tr>
+      <% } %>
+    <% } %>
+  </table>
+
+  <script type="text/javascript">
+    var ruleviz_canvas = document.getElementById("c")
+    var ruleviz_ctx = ruleviz_canvas.getContext("2d")
+    var ruleviz_img = new Image()
+    ruleviz_canvas.width  = 500
+    ruleviz_canvas.height = 500
+    ruleviz_img.src = "data:image/png;base64," + "<%= ruleviz %>"
+    ruleviz_img.onload = function() {
+        ruleviz_ctx.drawImage(ruleviz_img, 0, 0)
+    }
+
+    var cartviz_canvas = document.getElementById("cart")
+    var cartviz_ctx = cartviz_canvas.getContext("2d")
+    var cartviz_img = new Image()
+    cartviz_canvas.width  = 500
+    cartviz_canvas.height = 500
+    cartviz_img.src = "data:image/png;base64," + "<%= cart %>"
+    cartviz_img.onload = function() {
+        cartviz_ctx.drawImage(cartviz_img, 0, 0)
+    }
+  </script>
+</body>
+</html>
