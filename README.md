@@ -22,6 +22,16 @@ npm install
 
 ## Run
 
+You need to start Rserve on R first.
+
+```
+R
+> require("Rserve")
+> Rserve()
+```
+
+and run nodejs script
+
 ```
 node app.js
 ```
