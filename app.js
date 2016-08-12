@@ -19,6 +19,12 @@ app.get('/', function (req, res) {
   }).then( (data)=>{
     data = JSON.parse(data)
     res.render('index', {title:"rdata", ruleviz: data.ruleviz, cart: data.cart, rule: data.rule })
+  }).catch( (err) => {
+    if(err.code=="ECONNREFUSED"){
+      res.send('ERR: Please start Rserve() in R.')
+    }else{
+      res.send(err)
+    }
   })
 })
 
@@ -34,6 +40,12 @@ app.get('/json', function (req, res) {
     }).then( (data)=>{
       data = JSON.parse(data)
       res.render('index', {title:"json", ruleviz: data.ruleviz, cart: data.cart, rule: data.rule })
+    }).catch( (err) => {
+      if(err.code=="ECONNREFUSED"){
+        res.send('ERR: Please start Rserve() in R.')
+      }else{
+        res.send(err)
+      }
     })
   })
 
