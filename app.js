@@ -12,13 +12,14 @@ const args = {
 app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
+
   rio.$e({
       filename: path.join(__dirname, "titanic.R"),
       entrypoint: "maintitanic",
       data: args,
   }).then( (data)=>{
     data = JSON.parse(data)
-    res.render('index', {title:"rdata", ruleviz: data.ruleviz, cart: data.cart, rule: data.rule })
+    res.render('index', { title:"rdata", ruleviz: data.ruleviz, cart: data.cart, rule: data.rule })
   }).catch( (err) => {
     if(err.code=="ECONNREFUSED"){
       res.send('ERR: Please start Rserve() in R.')
@@ -26,6 +27,7 @@ app.get('/', function (req, res) {
       res.send(err)
     }
   })
+
 })
 
 
@@ -39,7 +41,7 @@ app.get('/json', function (req, res) {
         data: jsonResult,
     }).then( (data)=>{
       data = JSON.parse(data)
-      res.render('index', {title:"json", ruleviz: data.ruleviz, cart: data.cart, rule: data.rule })
+      res.render('index', { title:"json", ruleviz: data.ruleviz, cart: data.cart, rule: data.rule })
     }).catch( (err) => {
       if(err.code=="ECONNREFUSED"){
         res.send('ERR: Please start Rserve() in R.')
