@@ -1,6 +1,6 @@
 # Titanic-raw-data with R & nodejs
 
-This is an example with nodejs & R. Use R-language to analyze titanic-raw-data, and sending the result to nodejs. There are two versions in this example: [1] rdata [2] json. You can check two versions on the page.
+This is an example with nodejs & R. <br> Use R-language to analyze titanic-raw-data, and sending the result to nodejs. <br>  There are two versions in this example: [1] rdata [2] json. <br> You can check two versions on the page.
 
 ## Install
 

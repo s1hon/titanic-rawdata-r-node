@@ -5,7 +5,7 @@ const Converter = require("csvtojson").Converter
 const express = require('express')
 const app = express()
 
-var args = {
+const args = {
     rawdata: path.join(__dirname, "titanic.raw.rdata")
 }
 
@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
       data: args,
   }).then( (data)=>{
     data = JSON.parse(data)
-    res.render('index', {title:"csv-file", ruleviz: data.ruleviz, cart: data.cart, rule: data.rule })
+    res.render('index', {title:"rdata", ruleviz: data.ruleviz, cart: data.cart, rule: data.rule })
   })
 })
 
